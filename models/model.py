@@ -23,6 +23,9 @@ class Programa:
     def dar_like(self):
         self._likes += 1
 
+    def __str__(self):
+        return f'{self._nome} - {self.ano} - {self._likes} Likes'
+
 
 class Filme(Programa):
     def __init__(self, nome, ano, duracao):
@@ -32,6 +35,9 @@ class Filme(Programa):
     @property
     def duracao(self):
         return self._duracao
+
+    def __str__(self):
+        return f'{self._nome} - {self.ano} - {self.duracao} min - {self._likes} Likes'
 
 
 class Serie(Programa):
@@ -43,13 +49,19 @@ class Serie(Programa):
     def temporadas(self):
         return self._temporadas
 
+    def __str__(self):
+        return f'{self._nome} - {self.ano} - {self.temporadas} temporadas - {self._likes} Likes'
+
 
 vingadores = Filme('vingadores - guerra infinita', 2018, 160)
 vingadores.dar_like()
-print(f'{vingadores.nome} - {vingadores.ano} - Duração: {vingadores.duracao} - Likes: {vingadores.likes}')
 
 atlanta = Serie('Atlanta', 2022, 2)
 atlanta.dar_like()
 atlanta.dar_like()
-print(f'{atlanta.nome} - {atlanta.ano} - Duração: {atlanta.temporadas} - Likes: {atlanta.likes}')
 
+
+films_e_series = [vingadores, atlanta]
+
+for program in films_e_series:
+    print(program)
